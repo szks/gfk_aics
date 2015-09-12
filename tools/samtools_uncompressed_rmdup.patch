@@ -1,0 +1,32 @@
+diff --git a/bam_rmdup.c b/bam_rmdup.c
+index f0d2b5d..ab31e61 100644
+--- a/bam_rmdup.c
++++ b/bam_rmdup.c
+@@ -180,21 +180,24 @@ int bam_rmdup(int argc, char *argv[])
+ {
+ 	int c, is_se = 0, force_se = 0;
+ 	samfile_t *in, *out;
+-	while ((c = getopt(argc, argv, "sS")) >= 0) {
++	char *out_mode = "wb";
++	while ((c = getopt(argc, argv, "sSu")) >= 0) {
+ 		switch (c) {
+ 		case 's': is_se = 1; break;
+ 		case 'S': force_se = is_se = 1; break;
++		case 'u': out_mode = "wb0"; break;
+ 		}
+ 	}
+ 	if (optind + 2 > argc) {
+ 		fprintf(stderr, "\n");
+ 		fprintf(stderr, "Usage:  samtools rmdup [-sS] <input.srt.bam> <output.bam>\n\n");
+ 		fprintf(stderr, "Option: -s    rmdup for SE reads\n");
+-		fprintf(stderr, "        -S    treat PE reads as SE in rmdup (force -s)\n\n");
++		fprintf(stderr, "        -S    treat PE reads as SE in rmdup (force -s)\n");
++		fprintf(stderr, "        -u    uncompressed BAM output\n\n");
+ 		return 1;
+ 	}
+ 	in = samopen(argv[optind], "rb", 0);
+-	out = samopen(argv[optind+1], "wb", in->header);
++	out = samopen(argv[optind+1], out_mode, in->header);
+ 	if (in == 0 || out == 0) {
+ 		fprintf(stderr, "[bam_rmdup] fail to read/write input files\n");
+ 		return 1;

@@ -1,0 +1,3 @@
+GFKDIR = $(HOME)/DATA/GFK
+
+INPUT_DIR = $(GFKDIR)/test/Input

@@ -1,0 +1,7 @@
+align/bin/*
+align/ref/*
+align/Output/*
+dedup/bin/*
+dedup/ref/*
+detect/bin/*
+detect/ref/*
