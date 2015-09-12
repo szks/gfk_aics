@@ -5,7 +5,7 @@
 ########################################################################
 
 
-TARGET=GFKalign GFKdedup GFKdetect
+TARGET=GFKalign GFKdedup GFKdetect GFKalign-dedup
 
 CC = mpifccpx
 CFLAGS = -Xg -Kfast -Kopenmp -D_GNU_SOURCE
@@ -13,11 +13,11 @@ CFLAGS = -Xg -Kfast -Kopenmp -D_GNU_SOURCE
 ifneq (,$(findstring greatwave,$(HOSTNAME)))
 # HOKUSAI FX100
   CFLAGS += -DCHDIR
-  INSTDIR=../bin
-  SHAREDDIR=../shared
+  INSTDIR = ../bin
+  SHAREDDIR = ../shared
 else
-  INSTDIR=..
-  SHAREDDIR=..
+  INSTDIR = ..
+  SHAREDDIR = ..
 endif
 
 all: $(TARGET)

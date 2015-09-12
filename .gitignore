@@ -5,3 +5,5 @@ dedup/bin/*
 dedup/ref/*
 detect/bin/*
 detect/ref/*
+align-dedup/bin/*
+align-dedup/ref/*
