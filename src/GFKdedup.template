@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
     }
 #endif
 
-    SYSTEM("GFKDIR/split.sh GFKDIR SHAREDDIR %d", myrank);
+    SYSTEM("GFKDIR/split.sh GFKDIR SHAREDDIR %d 0", myrank);
 
     BARRIER(MPI_COMM_WORLD);
 

@@ -5,6 +5,7 @@ set -e -o pipefail
 GFKDIR=$1
 SHAREDDIR=$2
 myrank=$3 
+align_dedup=$4
 
 # HOKUSHAI
 if [ "$PJM_RSCUNIT" = "gwmpc" -o  "$PJM_RSCUNIT" = "gwacsg" ]; then
@@ -94,5 +95,7 @@ RUN_PERL ${GFKDIR}/mateMerge.pl aligned1.sam aligned2.sam > GFKOUTPUT
 
 # HOKUSHAI
 if [ "$PJM_RSCUNIT" = "gwmpc" -o  "$PJM_RSCUNIT" = "gwacsg" ]; then
-        ln -f GFKOUTPUT ../Output/GFKOUTPUT.$myrank
+        if [ $align_dedup -eq 0 ]; then
+                ln -f GFKOUTPUT ../Output/GFKOUTPUT.$myrank
+        fi
 fi

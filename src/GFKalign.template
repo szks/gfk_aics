@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
     }
 #endif
 
-    SYSTEM("GFKDIR/GFKalign_para.sh GFKDIR SHAREDDIR %d", myrank);
+    SYSTEM("GFKDIR/GFKalign_para.sh GFKDIR SHAREDDIR %d 0", myrank);
 
     MPI_Barrier(MPI_COMM_WORLD);
     t = MPI_Wtime() - t0;
